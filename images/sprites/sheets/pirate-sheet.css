@@ -1,0 +1,92 @@
+.sprite-pirate-walk-l1 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -0px -0px;
+ }
+ .sprite-pirate-walk-l2 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -240px -0px;
+ }
+ .sprite-pirate-walk-l3 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -480px -0px;
+ }
+ .sprite-pirate-walk-l4 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -720px -0px;
+ }
+ .sprite-pirate-walk-l5 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -960px -0px;
+ }
+ .sprite-pirate-walk-l6 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -1200px -0px;
+ }
+ .sprite-pirate-walk-r1 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -0px -360px;
+ }
+ .sprite-pirate-walk-r2 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -240px -360px;
+ }
+ .sprite-pirate-walk-r3 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -480px -360px;
+ }
+ .sprite-pirate-walk-r4 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -720px -360px;
+ }
+ .sprite-pirate-walk-r5 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -960px -360px;
+ }
+ .sprite-pirate-walk-r6 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -1200px -360px;
+ }
+ .sprite-z-pirate-idle-1 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 360px;
+     width: 240px;
+     background-position: -0px -720px;
+ }
+ 

@@ -1,0 +1,100 @@
+{
+  "sprites": [
+    {
+      "fileName": "pirate-walk-l1.png",
+      "width": 240,
+      "height": 360,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-l2.png",
+      "width": 240,
+      "height": 360,
+      "x": 240,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-l3.png",
+      "width": 240,
+      "height": 360,
+      "x": 480,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-l4.png",
+      "width": 240,
+      "height": 360,
+      "x": 720,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-l5.png",
+      "width": 240,
+      "height": 360,
+      "x": 960,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-l6.png",
+      "width": 240,
+      "height": 360,
+      "x": 1200,
+      "y": 0
+    },
+    {
+      "fileName": "pirate-walk-r1.png",
+      "width": 240,
+      "height": 360,
+      "x": 0,
+      "y": 360
+    },
+    {
+      "fileName": "pirate-walk-r2.png",
+      "width": 240,
+      "height": 360,
+      "x": 240,
+      "y": 360
+    },
+    {
+      "fileName": "pirate-walk-r3.png",
+      "width": 240,
+      "height": 360,
+      "x": 480,
+      "y": 360
+    },
+    {
+      "fileName": "pirate-walk-r4.png",
+      "width": 240,
+      "height": 360,
+      "x": 720,
+      "y": 360
+    },
+    {
+      "fileName": "pirate-walk-r5.png",
+      "width": 240,
+      "height": 360,
+      "x": 960,
+      "y": 360
+    },
+    {
+      "fileName": "pirate-walk-r6.png",
+      "width": 240,
+      "height": 360,
+      "x": 1200,
+      "y": 360
+    },
+    {
+      "fileName": "z-pirate-idle-1.png",
+      "width": 240,
+      "height": 360,
+      "x": 0,
+      "y": 720
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 1440,
+  "spriteSheetHeight": 1080
+}
