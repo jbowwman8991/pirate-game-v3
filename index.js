@@ -14,6 +14,7 @@ let offsetY = -170
 let counter = 0
 
 let showChest = true
+let openChest = false
 
 let level = 2
 let levels = {
@@ -35,13 +36,19 @@ let levels = {
             })
 
             chestOpen.position = {
-                x: 440,
-                y: 440
+                x: 540,
+                y: 540
+            }
+
+            chestClosed.position = {
+                x: chestOpen.position.x,
+                y: chestOpen.position.y + 50
             }
 
             counter = 9
 
             showChest = true
+            openChest = false
         }
     },
     1: {
@@ -183,11 +190,17 @@ let levels = {
             counter = 9
 
             chestOpen.position = {
-                x: 440,
-                y: 440
+                x: 540,
+                y: 540
+            }
+
+            chestClosed.position = {
+                x: chestOpen.position.x,
+                y: chestOpen.position.y + 50
             }
 
             showChest = true
+            openChest = false
         }
     },
     3: {
@@ -212,11 +225,17 @@ let levels = {
             counter = 9
 
             chestOpen.position = {
-                x: 440,
-                y: 440
+                x: 540,
+                y: 540
+            }
+
+            chestClosed.position = {
+                x: chestOpen.position.x,
+                y: chestOpen.position.y + 50
             }
 
             showChest = true
+            openChest = false
         }
     },
     4: {
@@ -241,11 +260,17 @@ let levels = {
             counter = 0
 
             chestOpen.position = {
-                x: 440,
-                y: 440
+                x: 540,
+                y: 540
+            }
+
+            chestClosed.position = {
+                x: chestOpen.position.x,
+                y: chestOpen.position.y + 50
             }
 
             showChest = true
+            openChest = false
         }
     }
 }
@@ -582,10 +607,18 @@ const nums = [
 
 const chestOpen = new Sprite({
     position: {
-        x: 440,
-        y: 440
+        x: 540,
+        y: 540
     },
     imageSrc: './images/chest-open-1.png'
+})
+
+const chestClosed = new Sprite({
+    position: {
+        x: chestOpen.position.x,
+        y: chestOpen.position.y + 50
+    },
+    imageSrc: './images/chest-closed-1.png'
 })
 
 const overlay = {
@@ -676,12 +709,13 @@ function animate(currentTime) {
                     
                     skeletons = []
 
-                    chestOpen.draw()
+                    if (openChest) chestOpen.draw()
+                    if (!openChest) chestClosed.draw()
                     if (showChest) {
                         showChest = false
-
-                        let chestOpenX = 440
-                        // let chestOpenY = 440 
+                        
+                        let chestOpenX = 540
+                        // let chestOpenY = 540 
                         if (chestOpenX > background.position.x + background.width - 100) {
                             chestOpenX = 0
                         }
@@ -689,14 +723,35 @@ function animate(currentTime) {
                             x: chestOpenX,
                             y: player.position.y
                         }
+                        chestClosed.position = {
+                            x: chestOpen.position.x,
+                            y: chestOpen.position.y + 50
+                        }
                     }
 
-                    setTimeout(() => {
+                    if (!openChest) {
                         if (
-                            player.hitBox.position.x <= chestOpen.position.x + chestOpen.width - 20 &&
-                            player.hitBox.position.x + player.hitBox.width >= chestOpen.position.x + 20 &&
-                            player.hitBox.position.y + player.hitBox.height >= chestOpen.position.y + 20 &&
-                            player.hitBox.position.y <= chestOpen.position.y + chestOpen.height - 20
+                            player.hitBox.position.x <= chestClosed.position.x + chestClosed.width + 40 &&
+                            player.hitBox.position.x + player.hitBox.width >= chestClosed.position.x - 40 &&
+                            player.hitBox.position.y + player.hitBox.height >= chestClosed.position.y - 40 &&
+                            player.hitBox.position.y <= chestClosed.position.y + chestClosed.height + 40
+                        ) {
+                            if (
+                                keys.x.pressed && 
+                                (((player.lastDirection === 'right' || player.lastDirection === 'up') && chestClosed.position.x > player.position.x) ||
+                                ((player.lastDirection === 'left' || player.lastDirection === 'down') && chestClosed.position.x < player.position.x))
+                            ) {
+                                openChest = true
+                            }
+                    }
+                    }
+
+                    if (openChest) {
+                        if (
+                            player.hitBox.position.x <= chestOpen.position.x + chestOpen.width - 80 &&
+                            player.hitBox.position.x + player.hitBox.width >= chestOpen.position.x + 80 &&
+                            player.hitBox.position.y + player.hitBox.height >= chestOpen.position.y + 80 &&
+                            player.hitBox.position.y <= chestOpen.position.y + chestOpen.height - 80
                         ) {
                             gsap.to(overlay, {
                                 opacity: 1,
@@ -709,8 +764,7 @@ function animate(currentTime) {
                                 }
                             })
                         }
-                    }, 5000);
-
+                    }
                 } 
 
                 // Player
@@ -743,6 +797,7 @@ function animate(currentTime) {
                     if (!player.topCollide) {
                         background.position.y += 10
                         chestOpen.position.y += 10
+                        chestClosed.position.y += 10
                         skeletons.forEach((skel) => {
                             skel.position.y += 10
                         })
@@ -760,6 +815,7 @@ function animate(currentTime) {
                     if (!player.bottomCollide) {
                         background.position.y -= 10
                         chestOpen.position.y -= 10
+                        chestClosed.position.y -= 10
                         skeletons.forEach((skel) => {
                             skel.position.y -= 10
                         })
@@ -777,6 +833,7 @@ function animate(currentTime) {
                     if (!player.leftCollide) {
                         background.position.x += 10
                         chestOpen.position.x += 10
+                        chestClosed.position.x += 10
                         skeletons.forEach((skel) => {
                             skel.position.x += 10
                         })
@@ -794,6 +851,7 @@ function animate(currentTime) {
                     if (!player.rightCollide) {
                         background.position.x -= 10
                         chestOpen.position.x -= 10
+                        chestClosed.position.x -= 10
                         skeletons.forEach((skel) => {
                             skel.position.x -= 10
                         })
