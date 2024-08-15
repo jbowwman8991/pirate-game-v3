@@ -210,7 +210,7 @@ let levels = {
                     x: 0,
                     y: 0
                 },
-                imageSrc: './images/backgrounds//ground-sand-1.png'
+                imageSrc: './images/backgrounds/ground-sand-1.png'
             })
 
             player.position = {
@@ -245,7 +245,7 @@ let levels = {
                     x: 0,
                     y: 0
                 },
-                imageSrc: './images/backgrounds//ground-sand-1.png'
+                imageSrc: './images/backgrounds/ground-sand-1.png'
             })
 
             player.position = {
@@ -743,27 +743,21 @@ function animate(currentTime) {
                             ) {
                                 openChest = true
                             }
-                    }
+                        }
                     }
 
                     if (openChest) {
-                        if (
-                            player.hitBox.position.x <= chestOpen.position.x + chestOpen.width - 80 &&
-                            player.hitBox.position.x + player.hitBox.width >= chestOpen.position.x + 80 &&
-                            player.hitBox.position.y + player.hitBox.height >= chestOpen.position.y + 80 &&
-                            player.hitBox.position.y <= chestOpen.position.y + chestOpen.height - 80
-                        ) {
-                            gsap.to(overlay, {
-                                opacity: 1,
-                                onComplete: () => {
-                                    level = 4
-                                    levels[level].init()
-                                    gsap.to(overlay, {
-                                        opacity: 0
-                                    })
-                                }
-                            })
-                        }
+                        gsap.to(overlay, {
+                            opacity: 1,
+                            onComplete: () => {
+                                level = 4
+                                levels[level].init()
+                                gsap.to(overlay, {
+                                    opacity: 0
+                                })
+                            },
+                            duration: 2
+                        })
                     }
                 } 
 
@@ -781,6 +775,16 @@ function animate(currentTime) {
                 // collisionBlocks.forEach(collisionBlock => {
                 //     collisionBlock.draw()
                 // })
+
+                if (keys.x.pressed && keys.w.pressed) {
+                    keys.w.pressed = false
+                } else if (keys.x.pressed && keys.a.pressed) {
+                    keys.a.pressed = false
+                } else if (keys.x.pressed && keys.s.pressed) {
+                    keys.s.pressed = false
+                } else if (keys.x.pressed && keys.d.pressed) {
+                    keys.d.pressed = false
+                }
 
                 if (!keys.x.pressed) {
                     player.width = 144
