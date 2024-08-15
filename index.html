@@ -1,0 +1,35 @@
+<style>
+    body {
+        background: black;
+        margin: 0;
+        padding: 0;
+    }
+    canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+</style>
+<canvas id="canvas"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/utils.js"></script>
+<script src="js/data/collisions.js"></script>
+<script src="js/classes/CollisionBlock.js"></script>
+<script src="js/classes/Sprite.js"></script>
+<script src="js/classes/Player.js"></script>
+<script src="js/classes/Skeleton.js"></script>
+<script src="js/classes/Ship.js"></script>
+<script src="js/classes/Wave.js"></script>
+<script src="js/classes/Cloud.js"></script>
+<script src="js/eventListeners.js"></script>
+<script src="index.js"></script>
+
+<!--
+This 64x64 pixel game was created for the Lowrez Jam 2024.
+The game is still a work in progress and players might experience some hiccups.
+Start the game as a swashbuckling pirate ready to fight some skeletons! There is only one level and in this level the goal is to defeat 10 skeleton enemies.
+Move your pirate player around using 'W', 'A', 'S', and 'D'. Attack by pressing 'X' or clicking the left mouse button! 
+Be careful to not take too much damage or you'll have to try again!
+-->
