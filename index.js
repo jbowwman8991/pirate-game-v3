@@ -640,9 +640,11 @@ function animate(currentTime) {
         c.fillRect(0, 0, canvas.width, canvas.height)
         
         // Background
-        background.draw()
+        // background.draw()
     
         if (level === 0) {
+            background.draw()
+
             // Start
             startButton.draw()
 
@@ -661,6 +663,8 @@ function animate(currentTime) {
             skeleton.position.x = 340
             skeleton.position.y = canvas.height / 2
         } else if (level === 1) {
+            background.draw()
+
             // Cloud
             cloud1.draw()
             cloud1.update()
@@ -693,6 +697,8 @@ function animate(currentTime) {
             }
             chestOpen.draw()
         } else {
+            background.draw()
+
             if (player.health == 0) {
                 gsap.to(overlay, {
                     opacity: 1,
