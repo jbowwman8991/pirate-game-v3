@@ -16,7 +16,7 @@ let counter = 0
 let showChest = true
 let openChest = false
 
-let level = 2
+let level = 0
 let levels = {
     0: {
         init: () => {
@@ -45,7 +45,7 @@ let levels = {
                 y: chestOpen.position.y + 50
             }
 
-            counter = 9
+            counter = 0
 
             showChest = true
             openChest = false
@@ -187,7 +187,7 @@ let levels = {
             skeletons.forEach((skel) => {
                 skel.health = 100
             })
-            counter = 9
+            counter = 0
 
             chestOpen.position = {
                 x: 540,
@@ -222,7 +222,7 @@ let levels = {
             skeletons.forEach((skel) => {
                 skel.health = 100
             })
-            counter = 9
+            counter = 0
 
             chestOpen.position = {
                 x: 540,
@@ -621,6 +621,14 @@ const chestClosed = new Sprite({
     imageSrc: './images/chest-closed-1.png'
 })
 
+const skull = new Sprite({
+    position: {
+        x: 0,
+        y: 0
+    },
+    imageSrc: './images/skull-1.png'
+})
+
 const overlay = {
     opacity: 0
 }
@@ -685,6 +693,12 @@ function animate(currentTime) {
             gameOver.draw()
             // Back
             backButton.draw()
+
+            skull.position = {
+                x: canvas.width / 2 - skull.width / 2,
+                y: canvas.height / 2 + 180
+            }
+            skull.draw()
         } else if (level === 4) {
             // Winner
             winner.draw()
@@ -693,7 +707,7 @@ function animate(currentTime) {
             
             chestOpen.position = {
                 x: canvas.width / 2 - chestOpen.width / 2,
-                y: canvas.width / 2 + 140
+                y: canvas.height / 2 + 140
             }
             chestOpen.draw()
         } else {
