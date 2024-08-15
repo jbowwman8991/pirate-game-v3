@@ -34,7 +34,7 @@ let levels = {
                 skel.health = 100
             })
 
-            chest.position = {
+            chestOpen.position = {
                 x: 440,
                 y: 440
             }
@@ -182,7 +182,7 @@ let levels = {
             })
             counter = 9
 
-            chest.position = {
+            chestOpen.position = {
                 x: 440,
                 y: 440
             }
@@ -211,7 +211,7 @@ let levels = {
             })
             counter = 9
 
-            chest.position = {
+            chestOpen.position = {
                 x: 440,
                 y: 440
             }
@@ -240,7 +240,7 @@ let levels = {
             })
             counter = 0
 
-            chest.position = {
+            chestOpen.position = {
                 x: 440,
                 y: 440
             }
@@ -580,7 +580,7 @@ const nums = [
     })
 ]
 
-const chest = new Sprite({
+const chestOpen = new Sprite({
     position: {
         x: 440,
         y: 440
@@ -654,11 +654,11 @@ function animate(currentTime) {
             // Back
             backButton.draw()
             
-            chest.position = {
-                x: canvas.width / 2 - chest.width / 2,
+            chestOpen.position = {
+                x: canvas.width / 2 - chestOpen.width / 2,
                 y: canvas.width / 2 + 140
             }
-            chest.draw()
+            chestOpen.draw()
         } else {
             if (player.health == 0) {
                 gsap.to(overlay, {
@@ -676,38 +676,41 @@ function animate(currentTime) {
                     
                     skeletons = []
 
-                    chest.draw()
+                    chestOpen.draw()
                     if (showChest) {
                         showChest = false
 
-                        let chestX = 440
-                        // let chestY = 440 
-                        if (chestX > background.position.x + background.width - 100) {
-                            chestX = 0
+                        let chestOpenX = 440
+                        // let chestOpenY = 440 
+                        if (chestOpenX > background.position.x + background.width - 100) {
+                            chestOpenX = 0
                         }
-                        chest.position = {
-                            x: chestX,
+                        chestOpen.position = {
+                            x: chestOpenX,
                             y: player.position.y
                         }
                     }
 
-                    if (
-                        player.hitBox.position.x <= chest.position.x + chest.width - 20 &&
-                        player.hitBox.position.x + player.hitBox.width >= chest.position.x + 20 &&
-                        player.hitBox.position.y + player.hitBox.height >= chest.position.y + 20 &&
-                        player.hitBox.position.y <= chest.position.y + chest.height - 20
-                    ) {
-                        gsap.to(overlay, {
-                            opacity: 1,
-                            onComplete: () => {
-                                level = 4
-                                levels[level].init()
-                                gsap.to(overlay, {
-                                    opacity: 0
-                                })
-                            }
-                        })
-                    }
+                    setTimeout(() => {
+                        if (
+                            player.hitBox.position.x <= chestOpen.position.x + chestOpen.width - 20 &&
+                            player.hitBox.position.x + player.hitBox.width >= chestOpen.position.x + 20 &&
+                            player.hitBox.position.y + player.hitBox.height >= chestOpen.position.y + 20 &&
+                            player.hitBox.position.y <= chestOpen.position.y + chestOpen.height - 20
+                        ) {
+                            gsap.to(overlay, {
+                                opacity: 1,
+                                onComplete: () => {
+                                    level = 4
+                                    levels[level].init()
+                                    gsap.to(overlay, {
+                                        opacity: 0
+                                    })
+                                }
+                            })
+                        }
+                    }, 5000);
+
                 } 
 
                 // Player
@@ -739,7 +742,7 @@ function animate(currentTime) {
         
                     if (!player.topCollide) {
                         background.position.y += 10
-                        chest.position.y += 10
+                        chestOpen.position.y += 10
                         skeletons.forEach((skel) => {
                             skel.position.y += 10
                         })
@@ -756,7 +759,7 @@ function animate(currentTime) {
         
                     if (!player.bottomCollide) {
                         background.position.y -= 10
-                        chest.position.y -= 10
+                        chestOpen.position.y -= 10
                         skeletons.forEach((skel) => {
                             skel.position.y -= 10
                         })
@@ -773,7 +776,7 @@ function animate(currentTime) {
         
                     if (!player.leftCollide) {
                         background.position.x += 10
-                        chest.position.x += 10
+                        chestOpen.position.x += 10
                         skeletons.forEach((skel) => {
                             skel.position.x += 10
                         })
@@ -790,7 +793,7 @@ function animate(currentTime) {
         
                     if (!player.rightCollide) {
                         background.position.x -= 10
-                        chest.position.x -= 10
+                        chestOpen.position.x -= 10
                         skeletons.forEach((skel) => {
                             skel.position.x -= 10
                         })
